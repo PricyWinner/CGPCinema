@@ -8,6 +8,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -19,7 +22,7 @@ import com.example.cgpcinema.databinding.FragmentDetailBinding;
  * Use the {@link DetailFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DetailFragment extends Fragment {
+public class DetailFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     FragmentDetailBinding binding;
     private Movie movie;
     // TODO: Rename parameter arguments, choose names that match
@@ -78,12 +81,26 @@ public class DetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         binding = FragmentDetailBinding.inflate(getLayoutInflater(), container, false);
         View view = binding.getRoot();
         binding.tvTitle.setText(movie.title);
         Glide.with(getContext()).load(movie.imageURL).into(binding.ivPoster);
+        binding.spinnerTime.setOnItemSelectedListener(this);
 
+//        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, time);
+        final Spinner list = binding.spinnerTime;
         return view;
     }
 
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

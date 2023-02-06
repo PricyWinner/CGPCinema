@@ -70,7 +70,6 @@ public class HomeFragment extends Fragment implements MovieAdapter.OnNoteListene
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        MovieService.getMovies(this);
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
@@ -78,7 +77,8 @@ public class HomeFragment extends Fragment implements MovieAdapter.OnNoteListene
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        MovieService.getMovies(this);
+
+//        MovieService.getMovies(this);
         Log.wtf("data", MovieService.movies.size() + "sizwe");
         recyclerView = view.findViewById(R.id.rvMovie);
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(),2);
@@ -114,8 +114,8 @@ public class HomeFragment extends Fragment implements MovieAdapter.OnNoteListene
     public void onResult(ArrayList<Movie> movies) {
         MovieAdapter adapter = new MovieAdapter(getContext(), this);
         adapter.notifyDataSetChanged();
-
-        Log.wtf("data", "afterResult1"+ MovieService.movies.size());
-        Log.wtf("data", "afterResult"+ adapter.getItemCount());
+//
+//        Log.wtf("data", "afterResult1"+ MovieService.movies.size());
+//        Log.wtf("data", "afterResult"+ adapter.getItemCount());
     }
 }
