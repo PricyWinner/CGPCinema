@@ -20,17 +20,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
 
     Context mcontext;
     private OnNoteListener moNoteListener;
-    public MovieAdapter(Context context, OnNoteListener onNoteListener) {
+    private ArrayList<Movie> moviesInAdapter = new ArrayList<>();
+    public MovieAdapter(Context context, OnNoteListener onNoteListener, ArrayList<Movie> movies) {
         mcontext = context;
         moNoteListener = onNoteListener;
-
+        moviesInAdapter = movies;
     }
-
+    public void setData(ArrayList<Movie> movies){
+        moviesInAdapter.clear();
+        moviesInAdapter = movies;
+    }
 
     @NonNull
     @Override
@@ -42,7 +47,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Movie movie = MovieService.movies.get(position);
+        Movie movie = moviesInAdapter.get(position);
         Glide.with(mcontext).load(movie.imageURL).into(holder.image);
 //        Drawable image = loadImageFromURL(movie.imageURL);
 //        holder.image.setImageDrawable(image);
@@ -52,8 +57,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     @Override
     public int getItemCount() {
 
-        Log.wtf("data", MovieService.movies.size()+"inRV");
-        return MovieService.movies.size();
+//        Log.wtf("data", MovieService.movies.size()+"inRV");
+        return moviesInAdapter.size();
     }
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 

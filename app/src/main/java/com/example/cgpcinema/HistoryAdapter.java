@@ -29,7 +29,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
     @Override
     public void onBindViewHolder(@NonNull HistoryViewHolder holder, int position) {
-        Transaction transaction = TransactionService.transactions.get(position);
+        Transaction transaction = TransactionService.transactions.get(TransactionService.transactions.size()-position-1);
         Glide.with(mcontext).load(transaction.movie.imageURL).into(holder.image);
         holder.title.setText(transaction.movie.title);
         holder.time.setText("Time: " + transaction.time);

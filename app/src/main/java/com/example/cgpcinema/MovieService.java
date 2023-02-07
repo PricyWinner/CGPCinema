@@ -54,7 +54,10 @@ public class MovieService {
 //    }
     private static ArrayList<Movie> retrieveMovies(){
         ArrayList<Movie> movies = new ArrayList<>();
-        final String URL = "https://imdb-api.com/en/API/Top250Movies/k_aqrdsaz8";
+        //api: k_aqrdsaz8
+        //api:k_sw90tw9n
+        //api:k_sw90tw9n
+        final String URL = "https://imdb-api.com/en/API/Top250Movies/k_yj77z2dl";
         try{
             URL url = new URL(URL);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -83,7 +86,7 @@ public class MovieService {
                     movies.add(movie);
 
                 }
-                Log.wtf("datar", "afterADD"+ movies.size());
+//                Log.wtf("datar", "afterADD"+ movies.size());
                 return movies;
 
             }
