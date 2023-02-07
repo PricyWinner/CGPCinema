@@ -34,6 +34,7 @@ public class HomeFragment extends Fragment implements MovieAdapter.OnNoteListene
     private String mParam1;
     private String mParam2;
     private RecyclerView recyclerView;
+    private MovieAdapter adapter;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -78,7 +79,7 @@ public class HomeFragment extends Fragment implements MovieAdapter.OnNoteListene
         super.onViewCreated(view, savedInstanceState);
 
 
-//        MovieService.getMovies(this);
+        MovieService.getMovies(this);
         Log.wtf("data", MovieService.movies.size() + "sizwe");
         recyclerView = view.findViewById(R.id.rvMovie);
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(),2);
@@ -86,9 +87,9 @@ public class HomeFragment extends Fragment implements MovieAdapter.OnNoteListene
         recyclerView.setLayoutManager(layoutManager);
 
 
-        MovieAdapter adapter = new MovieAdapter(getContext(), this);
+        adapter = new MovieAdapter(getContext(), this);
         recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+//        adapter.notifyDataSetChanged();
 
     }
 
@@ -112,8 +113,20 @@ public class HomeFragment extends Fragment implements MovieAdapter.OnNoteListene
 
     @Override
     public void onResult(ArrayList<Movie> movies) {
-        MovieAdapter adapter = new MovieAdapter(getContext(), this);
-        adapter.notifyDataSetChanged();
+        if(movies != null){
+            Log.wtf("data", "updating");
+//            Log.wtf("data", "updating");
+//            MovieAdapter adapter = new MovieAdapter(getContext(), this);
+//            recyclerView.setAdapter(adapter);
+//            adapter.notifyDataSetChanged();
+        }
+
+//        FragmentManager fragmentManager = getFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        DetailFragment detailFragment = new DetailFragment();
+//        fragmentTransaction.detach(detailFragment);
+//        fragmentTransaction.attach(detailFragment);
+//        fragmentTransaction.commit();
 //
 //        Log.wtf("data", "afterResult1"+ MovieService.movies.size());
 //        Log.wtf("data", "afterResult"+ adapter.getItemCount());

@@ -6,9 +6,25 @@
     tools:context=".HistoryFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:layout_width="match_parent"
+        android:id="@+id/noHistory"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:paddingBottom="40dp"
+        android:text="You Don't Have any History"
+        android:textSize="30dp"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:id="@+id/rvHistory"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="history" />
+        tools:listitem="@layout/history_card"/>
 
 </FrameLayout>

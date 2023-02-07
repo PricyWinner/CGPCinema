@@ -55,8 +55,6 @@ public class MainActivity extends AppCompatActivity implements MovieService.Call
 
     @Override
     public void onResult(ArrayList<Movie> movies) {
-        if (movies != null) {
 
-        }
     }
 }
